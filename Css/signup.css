@@ -1,0 +1,62 @@
+.form 
+{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+h2 
+{
+    font-size: 32px;
+    font-weight: bold;
+    color: #F99417;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #F5F5F5;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.text-danger {
+    color: #dc3545;
+    display: none;
+}
+
+.btn
+{
+    background-color: #4D4C7D;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn:hover 
+{
+    background-color: #F99417;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}
+/********/
+.valid-input 
+{
+    border-color: lightgreens;
+}
+
+
+
+

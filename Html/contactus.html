@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping</title>
+    <link rel="stylesheet" href="/Css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Css/all.min.css">
+    <link rel="stylesheet" href="/Css/mystyle.css">
+    <link rel="stylesheet" href="/Css/contactus.css">
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"">
+        <div class=" container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#"><img src="/images/Shopping Bag.png" alt="logo here"></a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-link active" aria-current="page" href="/Html/index.html">Home</a>
+                    <a class="nav-link" href="/Html/about.html">About</a>
+                    <a class="nav-link" href="/Html/contactus.html">Contact Us</a>
+                    <a class="nav-link" href="/Html/signup.html">Sign Up</a>
+                </div>
+            </div>
+
+            <!-- Shopping Cart Icon -->
+            <!-- Cart Display Container -->
+            <div class="ms-auto">
+                <a class="nav-link" href="#" id="cart-icon"><i class="fa-solid fa-cart-shopping"></i></a><span
+                    id="idnum">0</span>
+            </div>
+            <div id="cart-container" style="display:none;">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+
+        </nav>
+        <!--End Navbar-->
+    </header>
+    <div class="form">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" required>
+                <div id="validfullname" class="text-danger">Please enter your full name.</div>
+            </div>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                <div id="validemail" class="text-danger">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone" required>
+                <div id="validphone" class="text-danger">Please enter a valid phone number.</div>
+            </div>
+
+            <button type="submit" class="btn">Contact Us</button>
+        </form>
+    </div>
+<!--Footer-->
+<footer class="my-footer">
+    <div>
+        <h2>Online Shopping Company</h2>
+        <p>Our Company has been delivering exceptional services and products since 2013. We specialize in Express Delivery and are committed to customer satisfaction and innovation.</p>
+        
+        <!-- Company Contact Info -->
+        <p>Telephone: +01026833162</p>
+        <p>Email: olanazmy@gmail.com</p>
+
+        <!-- Social Media Icons with FontAwesome -->
+        <div>
+            <a href="your-facebook-url"><i class="fab fa-facebook-f"></i></a>
+            <a href="your-twitter-url"><i class="fab fa-twitter"></i></a>
+            <a href="your-linkedin-url"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Other icons as needed -->
+        </div>
+        
+        <!-- Back to Top Button -->
+        <button id="backToTop">
+            <i class="fas fa-arrow-up"></i> 
+          </button>
+    </div>
+</footer>
+<!--end of footer-->
+    <!-- Bootstrap JS-->
+    <script src="/Js/bootstrap.bundle.min.js"></script>
+    <script src="/Js/all.min.js"></script>
+    <script src="/Js/contact.js"></script>
+
+</body>
+
+</html>

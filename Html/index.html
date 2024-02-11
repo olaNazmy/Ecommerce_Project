@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Shopping</title>
+    <link rel="stylesheet" href="/Css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Css/all.min.css">
+    <link rel="stylesheet" href="/Css/mystyle.css">
+
+
+</head>
+
+<body>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"">
+        <div class=" container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#"><img src="/images/Shopping Bag.png" alt="logo here"></a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav mx-auto">
+                    <a class="nav-link active" aria-current="page" href="/Html/index.html">Home</a>
+                    <a class="nav-link" href="/Html/about.html">About</a>
+                    <a class="nav-link" href="/Html/contactus.html">Contact Us</a>
+                    <a class="nav-link" href="/Html/signup.html">Sign Up</a>
+                </div>
+            </div>
+
+            <!-- Shopping Cart Icon -->
+            <!-- Cart Display Container -->
+            <div class="ms-auto">
+                <a class="nav-link" href="#" id="cart-icon"><i class="fa-solid fa-cart-shopping"></i></a><span
+                    id="idnum">0</span>
+            </div>
+            <div id="cart-container" style="display:none;">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+
+        </nav>
+        <!--End Navbar-->
+    </header>
+    <!--slider-->
+    <div class="container">
+        <div class="slider" id="currentimg">
+            <div class="slider-text" id="animatedText"></div>
+            <!-- images will be here -->
+            <div class="left-arrow" id="prev">&#10094;</div> <!-- Left arrow -->
+            <div class="right-arrow" id="next">&#10095;</div> <!-- Right arrow -->
+        </div>
+    </div>
+    <!--slider-->
+
+
+    <!-- services section -->
+    <section class="services py-5 text-center">
+        <div class="container">
+            <div class="row">
+                <!-- single service -->
+                <div class="col-md-4 col-lg-4 my-3 mx-auto">
+                    <span class="service-icon">
+                        <i class="fas fa-parachute-box"></i>
+                    </span>
+                    <h5 class="fw-bold text-uppercase">free shipping</h5>
+                    <p class="text-muted text-capitalize">
+                        free shipping on all order over 100.00
+                    </p>
+                </div>
+                <!-- end of single service -->
+
+                <!-- single service -->
+                <div class="col-md-4 col-lg-4 my-3 mx-auto">
+                    <span class="service-icon">
+                        <i class="fas fa-phone-volume"></i>
+                    </span>
+                    <h5 class="fw-bold text-uppercase">online support 24/7</h5>
+                    <p class="text-muted text-capitalize">
+                        we will assist you with your inquiries
+                    </p>
+                </div>
+                <!-- end of single service -->
+
+                <!-- single service -->
+                <div class="col-md-4 col-lg-4 my-3 mx-auto">
+                    <span class="service-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </span>
+                    <h5 class="fw-bold text-uppercase">money back guarantee</h5>
+                    <p class="text-muted text-capitalize">
+                        free 100% refund for 30 days
+                    </p>
+                </div>
+                <!-- end of single service -->
+            </div>
+        </div>
+    </section>
+    <!-- END services section -->
+    <!--Categories section-->
+    <section class="product-category py-3 text-center">
+        <div class="container">
+            <h1 class="section-title">
+                <span class="text-highlight">O</span>ur
+                <span class="text-highlight">P</span>roducts
+            </h1>
+            <div class="category-list mt-4">
+                <ul class="list-inline">
+                    <li class="list-inline-item "><a href="#" onclick="showClothes(event)">CLOTHES</a></li>
+                    <li class="list-inline-item"><a href="#" onclick="showPerfumes(event)">PERFUMES</a></li>
+                    <li class="list-inline-item"><a href="#" onclick="showWatches(event)">WATCHES</a></li>
+                    <li class="list-inline-item"><a href="#" onclick="showBags(event)">BAGS</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!--End of Categories section-->
+
+    <!--START WITH Clothes-->
+    <div id="all-clothes" style="padding-top: 50px; margin-bottom: 50px;">
+        <div class="row">
+            <!-- product 1 -->
+            <div class="cart" id="product1">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/1.png" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Pink Prada Jacket</p>
+                    <p class="productPrice">$200</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="1" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Overlay part should be here, outside of any .cart elements -->
+            <div id="overlay" style="display:none;">
+                <div id="overlay-content">
+                    <div class="overlay-img"><img id="overlay-img" src="" alt=""></div>
+                    <p id="overlay-productName"></p>
+                    <p id="overlay-productPrice"></p>
+                    <button onclick="closeOverlay()">Close</button>
+                </div>
+            </div>
+            <!-- product 2-->
+            <div class="cart" id="product2">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/2.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Blue Prada Jacket</p>
+                    <p class="productPrice">$180</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="2" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product2')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 3 -->
+            <div class="cart" id="product3">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/3.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Cropped Jacket</p>
+                    <p class="productPrice">$150</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="3" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product3')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 4 -->
+            <div class="cart" id="product4">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/4.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Cropped UGG Jacket</p>
+                    <p class="productPrice">$200</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="4" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product4')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 5 -->
+            <div class="cart" id="product5">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/5.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Jeans Jacket</p>
+                    <p class="productPrice">$300</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="5" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product5')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 6 -->
+            <div class="cart" id="product6">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/6.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Lilac Jacket</p>
+                    <p class="productPrice">$150</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="6" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product6')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 7 -->
+            <div class="cart" id="product7">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/7.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Prada Jacket</p>
+                    <p class="productPrice">$300</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="7" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product7')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 8 -->
+            <div class="cart" id="product8">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/8.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">UGG Jacket</p>
+                    <p class="productPrice">$350</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="8" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product8')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 9 -->
+            <div class="cart" id="product9">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/9.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">The North Face Jacket</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="9" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product9')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 10 -->
+            <div class="cart" id="product10">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/10.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">The North Face Jacket Black</p>
+                    <p class="productPrice">$600</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="10" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product10')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 11 -->
+            <div class="cart" id="product11">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/11.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">The North Face Jacket</p>
+                    <p class="productPrice">$600</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="11" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product11')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 12 -->
+            <div class="cart" id="product12">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/clothes/12.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Pink Jacket</p>
+                    <p class="productPrice">$600</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="12" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product12')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--END OF CLOTHES SECTION-->
+    <!--Second  Watches -->
+    <div id="all-watches" style="display: none; padding-top: 50px; margin-bottom: 50px;">
+        <div class="row">
+            <!-- product 1-->
+            <div class="cart" id="product1prf">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/1.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Rolex Watch</p>
+                    <p class="productPrice">$3000</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="1" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1prf')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Overlay part should be here, outside of any .cart elements -->
+            <div id="overlay" style="display:none;">
+                <div id="overlay-content">
+                    <div class="overlay-img"><img id="overlay-img" src="" alt=""></div>
+                    <p id="overlay-productName"></p>
+                    <p id="overlay-productPrice"></p>
+                    <button onclick="closeOverlay()">Close</button>
+                </div>
+            </div>
+            <!-- product 2-->
+            <div class="cart" id="product2prf">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/2.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Smart Watch</p>
+                    <p class="productPrice">$2500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="2" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product2prf')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 3 -->
+            <div class="cart" id="product3">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/3.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Rolex Watch</p>
+                    <p class="productPrice">$4000</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="3" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 4 -->
+            <div class="cart" id="product4">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/4.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">New Rolex Collection</p>
+                    <p class="productPrice">$5000</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="4" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 5 -->
+            <div class="cart" id="product5">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/5.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Sliver Watch</p>
+                    <p class="productPrice">$3000</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="5" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 6 -->
+            <div class="cart" id="product6">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/6.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">New Rolex</p>
+                    <p class="productPrice">$2500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="6" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 7 -->
+            <div class="cart" id="product7">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/7.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Digital Rolex</p>
+                    <p class="productPrice">$2500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="7" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 8 -->
+            <div class="cart" id="product8">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/8.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Apple SE</p>
+                    <p class="productPrice">$2000</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="8" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 9 -->
+            <div class="cart" id="product9">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/9.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Apple Nike Air</p>
+                    <p class="productPrice">$1500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="9" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 10 -->
+            <div class="cart" id="product10">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/10.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Rolex New </p>
+                    <p class="productPrice">$1700</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="10" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 11 -->
+            <div class="cart" id="product11">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/11.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Rolex</p>
+                    <p class="productPrice">$3500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="11" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 12 -->
+            <div class="cart" id="product12">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/watches/12.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Apple Series 9</p>
+                    <p class="productPrice">$1500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="12" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--END OF Watches SECTION-->
+    <!--Perfumes div-->
+    <div id="all-perfumes" style="display: none; padding-top: 50px; margin-bottom: 50px;">
+        <div class="row">
+            <!-- product 1-->
+            <div class="cart" id="product1">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/1.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Cartier Perfume</p>
+                    <p class="productPrice">$600</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="1" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 2-->
+            <div class="cart" id="product2">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/2.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Cartier Sweetie</p>
+                    <p class="productPrice">$600</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="2" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 3 -->
+            <div class="cart" id="product3">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/3.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="3" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 4 -->
+            <div class="cart" id="product4">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/4.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Tom Ford </p>
+                    <p class="productPrice">$700</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="4" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 5 -->
+            <div class="cart" id="product5">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/5.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Armani Prive</p>
+                    <p class="productPrice">$700</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="5" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 6 -->
+            <div class="cart" id="product6">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/6.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Valentino Born in Roma</p>
+                    <p class="productPrice">$700</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="6" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 7 -->
+            <div class="cart" id="product7">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/7.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Givenchy Irresistible</p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="7" onclick="addToCart(event)">ADD TO CART</a></p>
+                </div>
+            </div>
+            <!-- product 8 -->
+            <div class="cart" id="product8">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/8.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Gucci</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="8" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 9 -->
+            <div class="cart" id="product9">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/9.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Chloe</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="9" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 10 -->
+            <div class="cart" id="product10">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/10.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Valentino Intense </p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="10" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 11 -->
+            <div class="cart" id="product11">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/11.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Kayali</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="11" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 12 -->
+            <div class="cart" id="product12">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/perfumes/12.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Tom Ford</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="11" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end of perfumes div-->
+    <!--bags div-->
+    <div id="all-bags" style="display: none; padding-top: 50px; margin-bottom: 50px;">
+        <div class="row">
+            <!-- product 1-->
+            <div class="cart" id="product1">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/1.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior Luxury Bag</p>
+                    <p class="productPrice">$1200</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="1" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Overlay part should be here, outside of any .cart elements -->
+            <div id="overlay" style="display:none;">
+                <div id="overlay-content">
+                    <div class="overlay-img"><img id="overlay-img" src="" alt=""></div>
+                    <p id="overlay-productName"></p>
+                    <p id="overlay-productPrice"></p>
+                    <button onclick="closeOverlay()">Close</button>
+                </div>
+            </div>
+            <!-- product 2-->
+            <div class="cart" id="product2">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/2.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Chanel Luxury Bag</p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="2" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product2')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 3 -->
+            <div class="cart" id="product3">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/3.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior Luxury Bag</p>
+                    <p class="productPrice">$1200</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="3" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 4 -->
+            <div class="cart" id="product4">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/4.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Chanel </p>
+                    <p class="productPrice">$900</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="4" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 5 -->
+            <div class="cart" id="product5">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/5.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior Luxury Bag</p>
+                    <p class="productPrice">$1300</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="5" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 6 -->
+            <div class="cart" id="product6">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/6.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior</p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="6" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 7 -->
+            <div class="cart" id="product7">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/7.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior</p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="7" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 8 -->
+            <div class="cart" id="product8">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/8.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Louis Vuitton</p>
+                    <p class="productPrice">$900</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="8" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 9 -->
+            <div class="cart" id="product9">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/9.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="9" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 10 -->
+            <div class="cart" id="product10">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/10.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior</p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="10" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product 11 -->
+            <div class="cart" id="product11">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/11.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">Dior</p>
+                    <p class="productPrice">$500</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="11" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <!-- product 12 -->
+            <div class="cart" id="product12">
+                <div class="new"><span>New</span></div><br><br>
+                <div class="product-img"><img src="/images/bags/12.jpeg" alt=""></div>
+                <div class="cart-details"><br>
+                    <p class="productName">YSL</p>
+                    <p class="productPrice">$800</p>
+                </div>
+                <div class="add-to-cart"><br>
+                    <p><a href="#" data-product-id="12" onclick="addToCart(event)">ADD TO CART</a></p>
+                    <!-- View Details Button inside the cart -->
+                    <div class="view-details">
+                        <button onclick="viewDetails('product1')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end of bags div-->
+    <!--Footer-->
+    <footer class="my-footer">
+        <div>
+            <h2>Online Shopping Company</h2>
+            <p>Our Company has been delivering exceptional services and products since 2013. We specialize in Express
+                Delivery and are committed to customer satisfaction and innovation.</p>
+
+            <!-- Company Contact Info -->
+            <p>Telephone: +01026833162</p>
+            <p>Email: olanazmy@gmail.com</p>
+
+            <!-- Social Media Icons with FontAwesome -->
+            <div>
+                <a href="your-facebook-url"><i class="fab fa-facebook-f"></i></a>
+                <a href="your-twitter-url"><i class="fab fa-twitter"></i></a>
+                <a href="your-linkedin-url"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Other icons as needed -->
+            </div>
+
+            <!-- Back to Top Button -->
+            <button id="backToTop">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+    <!--end of footer-->
+</body>
+
+
+
+<!-- Bootstrap JS-->
+<script src="/Js/bootstrap.bundle.min.js"></script>
+<script src="/Js/all.min.js"></script>
+<script src="/Js/slider.js"></script>
+
+</html>
